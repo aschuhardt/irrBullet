@@ -26,9 +26,9 @@ IBvhTriangleMeshShape::IBvhTriangleMeshShape(ISceneNode *n, IMesh *collMesh, f32
 void IBvhTriangleMeshShape::createShape(IMesh *mesh)
 {
     CollisionMesh = createTriangleMesh(mesh);
-    shape =  new btBvhTriangleMeshShape(CollisionMesh, false, true);
+    shape =  new btBvhTriangleMeshShape(CollisionMesh, true, true);
 
-    calculateLocalInertia(getMass(), vector3df(0.0f,0.0f,0.0f));
+    //calculateLocalInertia(getMass(), vector3df(0.0f,0.0f,0.0f));
 }
 
 IBvhTriangleMeshShape::~IBvhTriangleMeshShape()
