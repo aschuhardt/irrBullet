@@ -74,6 +74,19 @@ btTriangleMesh *ITriangleMeshShape::createTriangleMesh(IMesh* const mesh)
 				}
 				pTriMesh->addTriangle(vertices[0], vertices[1], vertices[2]);
 			}
+		} else if (mb->getVertexType() == video::EVT_TANGENTS) {
+		  auto mb_vertices = (video::S3DVertexTangents*)mb->getVertices();
+			u16* mb_indices = mb->getIndices();
+			numVertices = mb->getVertexCount();
+			for (int j = 0; j < mb->getIndexCount(); j += 3) {
+        for (k = 0; k < 3; k++)
+				{
+					s32 index = mb_indices[j+k];
+					if (index > numVertices) continue;
+					vertices[k] = irrlichtToBulletVector(mb_vertices[index].Pos * scale);
+				}
+				pTriMesh->addTriangle(vertices[0], vertices[1], vertices[2]);
+			}
 		}
 
 		// Does not handle the EVT_TANGENTS type
