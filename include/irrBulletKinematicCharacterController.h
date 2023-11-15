@@ -80,7 +80,7 @@ public:
 	@param gravity Y-axis of gravitational force
 	*/
 
-	void setGravity(irr::f32 gravity);
+	void setGravity(const irr::core::vector3df& gravity);
 
 	/*!
 		The max slope determines the maximum angle that the controller can walk up.
@@ -99,7 +99,7 @@ public:
 
 	bool canJump() const;
 
-	irr::f32 getGravity() const;
+	irr::core::vector3df getGravity() const;
 
 	irr::f32 getMaxSlope() const;
 
